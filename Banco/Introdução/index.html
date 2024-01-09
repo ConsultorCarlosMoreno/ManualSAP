@@ -12,7 +12,7 @@
         <link rel="prev" href="../../Administra%C3%A7%C3%A3o/Add-ons/%5BInvent%5D%20TaxPlus%20Reinf/Reinf/">
       
       
-        <link rel="next" href="../../Blog/">
+        <link rel="next" href="../../Compras/Introdu%C3%A7%C3%A3o/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -70,6 +70,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#fluxogramas-modulo-bancario" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -253,12 +258,12 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Blog/" class="md-tabs__link">
+        <a href="../../Compras/Introdu%C3%A7%C3%A3o/" class="md-tabs__link">
           
   
     
   
-  Blog
+  Compras
 
         </a>
       </li>
@@ -407,7 +412,7 @@
         
   
   <span class="md-ellipsis">
-    Licenças SAP
+    Quadro de Licenças SAP Business One
   </span>
   
 
@@ -1302,6 +1307,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -1335,10 +1342,6 @@
     
       
         
-          
-        
-      
-        
       
     
     
@@ -1355,33 +1358,23 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../Blog/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
   
   <span class="md-ellipsis">
-    Blog
+    Compras
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Blog
+            Compras
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
             
               
                 
@@ -1389,54 +1382,16 @@
   
   
   
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../../Compras/Introdu%C3%A7%C3%A3o/" class="md-nav__link">
         
-          
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../Blog/Posts/" class="md-nav__link ">
-              
   
   <span class="md-ellipsis">
-    Posts
+    Introdução Modulo de Compras
   </span>
   
 
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            Posts
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
+      </a>
     </li>
   
 
@@ -1464,10 +1419,65 @@
                   
 
 
-  <h1>Introdução</h1>
-
 <p><mark>Bem-vindo ao futuro da gestão financeira com o Módulo Bancário do SAP Business One.</mark></p>
 <p>Nesta introdução, convidamos você a explorar as inovações e vantagens que esse módulo traz para o universo das transações bancárias empresariais. Desde a simplificação da conciliação até a automação de processos de pagamento, cada funcionalidade é projetada para oferecer eficiência e controle sem precedentes. Prepare-se para uma jornada onde a agilidade e a precisão se encontram, transformando a forma como sua empresa lida com o fluxo financeiro. Vamos desbravar juntos os caminhos do Módulo Bancário do SAP Business One.</p>
+<p>Módulo banco praticamente é separado em 3 processos: <mark>Contas a Receber</mark> , <mark>Contas a Pagar</mark> e <mark>Conciliação Bancaria</mark>.</p>
+<hr />
+<h1 id="fluxogramas-modulo-bancario">Fluxogramas Módulo Bancario</h1>
+<p><mark>Contas a Pagar: Dinheiro, Trasnferencia, Pix e Cheque</mark></p>
+<p>Obs.: Processo abaixo é de forma padarão conta a conta dentro do SAP Business One.
+<pre class="mermaid"><code>graph LR
+  A[Incio] --&gt; B[Gerar relatorio de contas a pagar];
+  B --&gt; C{Relatorio gerado?};
+  C --&gt; |Sim| D[Contas a Pagar]
+  C --&gt; |Não| B[Gerar relatorio de contas a pagar]
+  D --&gt; F[Selecionar meio de pagamento]
+  F --&gt; G[Baixar contas a pagar]
+  G --&gt; H[Importar Extrato OfX]
+  H --&gt; I{Extrato Importado?}
+  I --&gt; |Não| H[Importar Extrato OfX]
+  I --&gt; |Sim| J[Reconciliação]
+  J --&gt; Y[Fim]</code></pre></p>
+<hr />
+<p><mark>Contas a Pagar: Add-on BankPlus</mark></p>
+<p>Obs.: Processo abaixo é de forma manual, sem nenhuma automoção.
+<pre class="mermaid"><code>graph LR
+  A[Incio] --&gt; B[Gerar relatorio de contas a pagar];
+  B --&gt; C{Relatorio gerado?};
+  C --&gt; |Sim| D[Administração de Pagamentos]
+  C --&gt; |Não| B[Gerar relatorio de contas a pagar]
+  D --&gt; F{DDA?}
+  F --&gt; |Sim| G[Importar DDA]
+  F --&gt; |Não| H[Realizar provisão em documentos]
+  G --&gt; I{DDA Importado?}
+  I --&gt; |Não| G[Importar DDA]
+  I --&gt; |Sim| J[Realizar provisão]
+  J --&gt; L{Provisão realizada?}
+  H --&gt; L{Provisão realizada?}
+  L --&gt; P[Gerar arquivo de remessa]
+  P --&gt; O[Importar arquivo de retorno]
+  O --&gt; Z[Importar Extrato OfX]
+  Z --&gt; S[Reconciliação]
+  S --&gt; Y[Fim]</code></pre></p>
+<hr />
+<p><mark>Contas a Pagar: Add-on BankPlus Com Van Bancaria</mark></p>
+<p>Obs.: Processo abaixo, o serviço pega o arquivo de remessa, envia para o banco e o banco retorna o arquivo de retorno através do serviço, assim importando automaticamente.</p>
+<pre class="mermaid"><code>graph LR
+  A[Incio] --&gt; B[Gerar relatorio de contas a pagar];
+  B --&gt; C{Relatorio gerado?};
+  C --&gt; |Sim| D[Administração de Pagamentos]
+  C --&gt; |Não| B[Gerar relatorio de contas a pagar]
+  D --&gt; F{DDA?}
+  F --&gt; |Sim| G[Importar DDA]
+  F --&gt; |Não| H[Realizar provisão em documentos]
+  G --&gt; I{DDA Importado?}
+  I --&gt; |Não| G[Importar DDA]
+  I --&gt; |Sim| J[Realizar provisão]
+  J --&gt; L{Provisão realizada?}
+  H --&gt; L{Provisão realizada?}
+  L --&gt; P[Gerar arquivo de remessa]
+  P --&gt; S[Reconciliação]
+  S --&gt; Y[Fim]</code></pre>
 
 
 
@@ -1516,13 +1526,13 @@
         
         
           
-          <a href="../../Blog/" class="md-footer__link md-footer__link--next" aria-label="Next: Blog">
+          <a href="../../Compras/Introdu%C3%A7%C3%A3o/" class="md-footer__link md-footer__link--next" aria-label="Next: Introdução Modulo de Compras">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Blog
+                Introdução Modulo de Compras
               </div>
             </div>
             <div class="md-footer__button md-icon">
